@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Antonio · Bar Restaurante · Zaragoza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:      #F9F5EE;
+  --ivory-dark: #EFE9DC;
+  --stone:      #E2D9C8;
+  --olive:      #5C6B3A;
+  --olive-dark: #3E4A25;
+  --olive-light:#8A9E5B;
+  --ochre:      #C68B2C;
+  --ochre-light:#E0AA50;
+  --ink:        #1A1710;
+  --ink-mid:    #3D3A30;
+  --ink-light:  #7A7560;
+  --white:      #FFFFFF;
+  --border:     rgba(26,23,16,0.10);
+  --nav-h:      70px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;
+  background:rgba(249,245,238,0.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 4px 28px rgba(26,23,16,0.08);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.02em;}
+.nav-logo span{color:var(--olive);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;}
+.nav-links a:hover{color:var(--olive);}
+.nav-cta{background:var(--olive)!important;color:var(--white)!important;padding:10px 22px;border-radius:3px;transition:background .2s!important;}
+.nav-cta:hover{background:var(--olive-dark)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);display:block;transition:.3s;}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  padding-top:calc(var(--nav-h) + 64px);
+  padding-bottom:80px;
+  padding-left:8%;padding-right:8%;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 30%, rgba(92,107,58,.22) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 20% 75%, rgba(198,139,44,.13) 0%,transparent 55%),
+    linear-gradient(155deg, #1A1710 0%, #2C2A1E 45%, #3B3827 100%);
+}
+.hero-texture{
+  position:absolute;inset:0;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23F9F5EE'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='%23F9F5EE'/%3E%3Ccircle cx='80' cy='0' r='1.5' fill='%23F9F5EE'/%3E%3Ccircle cx='0' cy='80' r='1.5' fill='%23F9F5EE'/%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%23F9F5EE'/%3E%3C/svg%3E");
+  background-size:80px 80px;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre-light);margin-bottom:1.6rem;
+  animation:fadeUp .8s .1s both;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--ochre-light);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,5.5vw,5.8rem);
+  font-weight:700;line-height:1.05;
+  color:var(--ivory);margin-bottom:1.6rem;
+  animation:fadeUp .8s .25s both;
+}
+.hero-title em{display:block;font-style:italic;color:var(--olive-light);}
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(249,245,238,.65);max-width:420px;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp .8s .4s both;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .55s both;}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--olive);color:white;padding:15px 30px;border-radius:3px;font-size:.78rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .2s;}
+.btn-p:hover{background:var(--olive-dark);transform:translateY(-2px);}
+.btn-o{display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(249,245,238,.8);padding:15px 30px;border-radius:3px;font-size:.78rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(249,245,238,.25);cursor:pointer;transition:border-color .2s,color .2s;}
+.btn-o:hover{border-color:var(--ochre-light);color:var(--ochre-light);}
+
+/* REVIEW CAROUSEL */
+.hero-right{animation:fadeLeft .9s .4s both;}
+.review-carousel-wrap{background:rgba(249,245,238,.07);border:1px solid rgba(249,245,238,.12);border-radius:6px;padding:32px;backdrop-filter:blur(6px);position:relative;overflow:hidden;}
+.google-badge{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid rgba(249,245,238,.12);}
+.google-g{width:44px;height:44px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#4285F4;font-family:serif;flex-shrink:0;}
+.google-stars{color:#FBBC04;font-size:1rem;letter-spacing:2px;line-height:1;}
+.google-meta{font-size:.8rem;color:rgba(249,245,238,.6);margin-top:3px;}
+.google-meta strong{color:rgba(249,245,238,.9);}
+.carousel-track{position:relative;min-height:140px;}
+.review-slide{position:absolute;top:0;left:0;right:0;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;}
+.review-slide.active{opacity:1;transform:translateY(0);pointer-events:auto;position:relative;}
+.slide-quote{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--olive-light);opacity:.3;line-height:.4;margin-bottom:8px;}
+.slide-text{font-size:.92rem;color:rgba(249,245,238,.82);line-height:1.7;font-style:italic;margin-bottom:16px;}
+.slide-author{display:flex;align-items:center;gap:10px;}
+.slide-avatar{width:34px;height:34px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:white;flex-shrink:0;}
+.slide-name{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(249,245,238,.75);}
+.slide-stars{color:#FBBC04;font-size:.8rem;margin-top:2px;}
+.carousel-dots{display:flex;gap:7px;margin-top:22px;justify-content:center;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(249,245,238,.2);cursor:pointer;transition:background .3s,transform .3s;border:none;}
+.dot.active{background:var(--olive-light);transform:scale(1.2);}
+
+/* STATS BAR */
+.hero-stats-bar{position:relative;z-index:2;display:flex;gap:0;margin-top:4rem;border-top:1px solid rgba(249,245,238,.1);padding-top:2rem;animation:fadeUp .8s .8s both;}
+.hstat{flex:1;text-align:center;border-right:1px solid rgba(249,245,238,.1);}
+.hstat:last-child{border-right:none;}
+.hstat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--ochre-light);line-height:1;}
+.hstat-lbl{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(249,245,238,.4);margin-top:5px;}
+
+/* COMMON */
+section{padding:100px 8%;}
+.sec-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--olive);margin-bottom:.9rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;color:var(--ink);}
+.sec-title em{font-style:italic;color:var(--olive);}
+
+/* NOSOTROS */
+#nosotros{background:var(--ivory-dark);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;position:relative;}
+.mosaic-tile{border-radius:4px;padding:28px 22px;display:flex;flex-direction:column;gap:10px;}
+.mosaic-tile:nth-child(1){background:var(--olive);color:white;grid-row:1/3;}
+.mosaic-tile:nth-child(2){background:var(--stone);}
+.mosaic-tile:nth-child(3){background:var(--ochre);color:white;}
+.mosaic-big{justify-content:flex-end;}
+.tile-icon{font-size:2.2rem;}
+.tile-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;line-height:1.2;}
+.tile-desc{font-size:.8rem;opacity:.75;line-height:1.6;}
+.about-text .sec-title{margin-bottom:1.4rem;}
+.about-text p{font-size:.95rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1.1rem;}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.5rem;}
+.pillar{padding:14px 16px;background:white;border-radius:3px;border-left:3px solid var(--olive);}
+.pillar strong{display:block;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;}
+.pillar span{font-size:.78rem;color:var(--ink-light);}
+
+/* CARTA */
+#carta{background:white;}
+.carta-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem;}
+.tabs{display:flex;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;}
+.tab{padding:10px 22px;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;background:transparent;color:var(--ink-light);transition:all .2s;}
+.tab.on{background:var(--olive);color:white;}
+.tab:hover:not(.on){background:var(--ivory-dark);}
+.panel{display:none;}
+.panel.on{display:grid;}
+.dishes-grid{grid-template-columns:repeat(3,1fr);gap:1.3rem;}
+.dish{padding:26px 22px;border:1px solid var(--border);border-radius:4px;position:relative;transition:box-shadow .2s,transform .2s;cursor:default;}
+.dish:hover{box-shadow:0 8px 28px rgba(26,23,16,.07);transform:translateY(-3px);}
+.dish.star{border-color:var(--ochre);}
+.dish.star::before{content:'Especialidad';position:absolute;top:-11px;left:18px;background:var(--ochre);color:white;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.dish-icon{font-size:1.9rem;margin-bottom:12px;}
+.dish h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.dish p{font-size:.8rem;color:var(--ink-light);line-height:1.6;}
+.list-panel{grid-template-columns:1fr;}
+.full-list{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.full-item{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--ink);transition:background .15s;}
+.full-item:hover{background:var(--ivory);}
+.full-item:nth-child(odd){border-right:1px solid var(--border);}
+
+/* RESEÑAS */
+#resenas{background:var(--ivory-dark);}
+.rev-header{text-align:center;max-width:540px;margin:0 auto 3.5rem;}
+.big-rating{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin:1.4rem 0;}
+.big-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;color:var(--olive);line-height:1;}
+.big-stars{color:#FBBC04;font-size:1.3rem;margin-bottom:4px;}
+.big-count{font-size:.82rem;color:var(--ink-light);}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.rev-card{background:white;padding:28px;border-radius:4px;border-top:3px solid var(--olive);}
+.rev-q{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--olive);opacity:.15;line-height:.4;margin-bottom:8px;}
+.rev-text{font-size:.88rem;color:var(--ink-mid);line-height:1.75;font-style:italic;margin-bottom:1.2rem;}
+.rev-foot{display:flex;align-items:center;justify-content:space-between;}
+.rev-name{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);}
+.rev-stars{color:#FBBC04;font-size:.85rem;}
+
+/* RESERVAS */
+#reservas{background:var(--ink);position:relative;overflow:hidden;}
+#reservas::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 25% 50%, rgba(92,107,58,.2) 0%,transparent 65%);}
+#reservas::after{content:'CASA ANTONIO';position:absolute;right:-40px;bottom:-30px;font-family:'Cormorant Garamond',serif;font-size:9rem;font-weight:700;color:rgba(249,245,238,.025);white-space:nowrap;user-select:none;}
+.res-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.res-left .sec-label{color:var(--olive-light);}
+.res-left .sec-title{color:var(--ivory);margin-bottom:1.4rem;}
+.res-left p{color:rgba(249,245,238,.6);line-height:1.8;font-size:.93rem;margin-bottom:2rem;}
+.cinfo{display:flex;flex-direction:column;gap:.9rem;}
+.crow{display:flex;align-items:center;gap:14px;}
+.crow .ci{width:40px;height:40px;border-radius:3px;background:rgba(249,245,238,.07);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.crow .ct strong{display:block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre-light);margin-bottom:2px;}
+.crow .ct span,.crow .ct a{font-size:.88rem;color:rgba(249,245,238,.7);text-decoration:none;}
+.res-form{background:white;padding:40px;border-radius:5px;}
+.res-form h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--ink);margin-bottom:.3rem;}
+.res-form > div > p{font-size:.82rem;color:var(--ink-light);margin-bottom:1.8rem;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem;}
+.fg label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mid);}
+.fg input,.fg select,.fg textarea{padding:12px 14px;border:1px solid var(--border);border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--ink);background:var(--ivory);outline:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--olive);}
+.fg textarea{resize:vertical;min-height:88px;}
+.fsub{width:100%;padding:15px;margin-top:.4rem;background:var(--olive);color:white;border:none;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.fsub:hover{background:var(--olive-dark);}
+.ok-msg{display:none;text-align:center;padding:20px;}
+.ok-msg .ck{font-size:3rem;margin-bottom:1rem;}
+.ok-msg h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);margin-bottom:.5rem;}
+.ok-msg p{font-size:.88rem;color:var(--ink-light);}
+
+/* HORARIOS */
+#horarios{background:white;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.hours-list{margin-top:1.8rem;}
+.hrow{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:.9rem;}
+.hrow:last-child{border-bottom:none;}
+.hday{font-weight:700;color:var(--ink);}
+.htime{color:var(--ink-mid);}
+.map-box{height:370px;background:var(--stone);border-radius:5px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.map-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(92,107,58,.12) 0%,transparent 70%);}
+.map-center{text-align:center;position:relative;z-index:1;}
+.map-center .mp{font-size:3rem;margin-bottom:10px;}
+.map-center h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--ink);margin-bottom:4px;}
+.map-center p{font-size:.85rem;color:var(--ink-mid);}
+.map-btn{display:inline-block;margin-top:16px;padding:10px 22px;background:var(--olive);color:white;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:background .2s;}
+.map-btn:hover{background:var(--olive-dark);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:60px 8% 28px;color:rgba(249,245,238,.55);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:40px;border-bottom:1px solid rgba(249,245,238,.07);margin-bottom:28px;}
+.fb .nav-logo{display:inline-block;margin-bottom:1rem;color:var(--ivory);}
+.fb p{font-size:.84rem;line-height:1.7;}
+footer h4{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ochre-light);margin-bottom:.9rem;}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+footer ul li a{font-size:.84rem;color:rgba(249,245,238,.55);text-decoration:none;transition:color .2s;}
+footer ul li a:hover{color:var(--ivory);}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.76rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(28px);}to{opacity:1;transform:translateX(0);}}
+
+/* MOBILE */
+@media(max-width:920px){
+  section{padding:70px 6%;}
+  .hero-inner{grid-template-columns:1fr;gap:3rem;}
+  #nosotros,#horarios{grid-template-columns:1fr;gap:3rem;}
+  .res-inner{grid-template-columns:1fr;gap:3rem;}
+  .dishes-grid{grid-template-columns:1fr 1fr;}
+  .rev-grid{grid-template-columns:1fr;}
+  .f2{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr;gap:2rem;}
+  .nav-links{display:none;flex-direction:column;gap:0;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--ivory);border-bottom:1px solid var(--border);}
+  .nav-links.open{display:flex;}
+  .nav-links li a{display:block;padding:15px 6%;border-top:1px solid var(--border);}
+  .hamburger{display:flex;}
+  .hero-stats-bar{flex-wrap:wrap;}
+  .full-list{grid-template-columns:1fr;}
+  .full-item:nth-child(odd){border-right:none;}
+  .about-mosaic{grid-template-columns:1fr 1fr;}
+  .mosaic-tile:nth-child(1){grid-row:auto;}
+  .pillars{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .dishes-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:clamp(2.6rem,9vw,4rem);}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Casa <span>Antonio</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#horarios">Ubicación</a></li>
+    <li><a href="#reservas" class="nav-cta">Reservar mesa</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Bar · Restaurante · Zaragoza desde 1980</p>
+      <h1 class="hero-title">Cocina<br><em>tradicional</em><br>aragonesa</h1>
+      <p class="hero-sub">Raciones generosas, sabor de siempre y el ambiente que te hace volver. En el corazón de Zaragoza, una parada obligatoria.</p>
+      <div class="hero-btns">
+        <a href="#reservas" class="btn-p">🍽️ Reservar mesa</a>
+        <a href="#carta" class="btn-o">Ver la carta</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="review-carousel-wrap">
+        <div class="google-badge">
+          <div class="google-g">G</div>
+          <div class="google-info">
+            <div class="google-stars">★★★★½</div>
+            <div class="google-meta"><strong>4,4 · 416 reseñas</strong> en Google Maps</div>
+          </div>
+        </div>
+        <div class="carousel-track" id="carouselTrack">
+          <div class="review-slide active">
+            <div class="slide-quote">"</div>
+            <p class="slide-text">Lo recomiendo totalmente. La comida es riquísima, el ambiente es espectacular y la atención es de diez. Sin duda, una parada obligatoria en cada visita a Zaragoza.</p>
+            <div class="slide-author">
+              <div class="slide-avatar">M</div>
+              <div><div class="slide-name">Małgorzata D. · Local Guide</div><div class="slide-stars">★★★★★</div></div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="slide-quote">"</div>
+            <p class="slide-text">Muy rico este sitio. Tranquilo, comida tradicional generosa, una carta sencilla en la que no te mareas y buen servicio. Volveré sin duda.</p>
+            <div class="slide-author">
+              <div class="slide-avatar">J</div>
+              <div><div class="slide-name">Javier A. · Local Guide</div><div class="slide-stars">★★★★★</div></div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="slide-quote">"</div>
+            <p class="slide-text">Primera visita a Casa Antonio y muy impresionado con el servicio y la comida. ¡Altamente recomendado! Sin duda volveré.</p>
+            <div class="slide-author">
+              <div class="slide-avatar">V</div>
+              <div><div class="slide-name">Visitante internacional</div><div class="slide-stars">★★★★★</div></div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="slide-quote">"</div>
+            <p class="slide-text">Ambiente tranquilo y acogedor, con una carta que no te abruma. Los platos tienen sabor de verdad, como la comida casera que ya no abunda.</p>
+            <div class="slide-author">
+              <div class="slide-avatar">A</div>
+              <div><div class="slide-name">Ana R.</div><div class="slide-stars">★★★★★</div></div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="slide-quote">"</div>
+            <p class="slide-text">Raciones muy generosas y precios muy razonables para la calidad que ofrecen. El pollo al chilindrón está para repetir. Trato cercano y sin prisas.</p>
+            <div class="slide-author">
+              <div class="slide-avatar">C</div>
+              <div><div class="slide-name">Carlos M.</div><div class="slide-stars">★★★★★</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="hstat"><div class="hstat-num">4,4</div><div class="hstat-lbl">Valoración Google</div></div>
+    <div class="hstat"><div class="hstat-num">416</div><div class="hstat-lbl">Reseñas verificadas</div></div>
+    <div class="hstat"><div class="hstat-num">40+</div><div class="hstat-lbl">Años de historia</div></div>
+    <div class="hstat"><div class="hstat-num">10€</div><div class="hstat-lbl">Desde por persona</div></div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="about-mosaic reveal">
+    <div class="mosaic-tile mosaic-big">
+      <div class="tile-icon">🫕</div>
+      <div class="tile-title" style="color:white;">Cocina casera de verdad</div>
+      <div class="tile-desc">Recetas tradicionales aragonesas elaboradas cada día con producto fresco y mucho cariño.</div>
+    </div>
+    <div class="mosaic-tile">
+      <div class="tile-icon">🍽️</div>
+      <div class="tile-title">Raciones generosas</div>
+      <div class="tile-desc">Saldrás siempre satisfecho. Lo prometemos.</div>
+    </div>
+    <div class="mosaic-tile">
+      <div class="tile-icon">📋</div>
+      <div class="tile-title" style="color:white;">Carta sencilla</div>
+      <div class="tile-desc">Sin agobios. Todo rico y bien hecho.</div>
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <p class="sec-label">Nuestra historia</p>
+    <h2 class="sec-title">Tradición y sabor<br><em>de toda la vida</em></h2>
+    <p>Casa Antonio es mucho más que un restaurante. Es el lugar donde la cocina aragonesa cobra vida en cada plato, donde la cuchara tiene el mismo valor que la mejor receta, y donde cada visita se convierte en un recuerdo.</p>
+    <p>Llevamos décadas sirviendo a los zaragozanos y a quienes nos visitan desde fuera, con una filosofía sencilla: ingredientes de calidad, elaboración casera y raciones que sacian de verdad.</p>
+    <div class="pillars">
+      <div class="pillar"><strong>Cocina aragonesa</strong><span>Recetas de siempre, hechas hoy</span></div>
+      <div class="pillar"><strong>Producto fresco</strong><span>Seleccionado cada mañana</span></div>
+      <div class="pillar"><strong>Trato cercano</strong><span>Como en casa, desde el primer día</span></div>
+      <div class="pillar"><strong>Precio justo</strong><span>Calidad real sin sorpresas</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="carta-head reveal">
+    <div><p class="sec-label">Lo que cocinamos</p><h2 class="sec-title">Nuestra <em>carta</em></h2></div>
+    <div class="tabs">
+      <button class="tab on" onclick="showTab('dest',this)">Destacados</button>
+      <button class="tab" onclick="showTab('full',this)">Carta completa</button>
+    </div>
+  </div>
+  <div id="panel-dest" class="panel on dishes-grid reveal">
+    <div class="dish star"><div class="dish-icon">🥚</div><h3>Tortilla de Patatas</h3><p>Jugosa por dentro, con el punto perfecto. Un clásico absoluto.</p></div>
+    <div class="dish"><div class="dish-icon">🍗</div><h3>Pollo al Chilindrón</h3><p>Receta aragonesa por excelencia, cocinada a fuego lento con pimiento y jamón.</p></div>
+    <div class="dish"><div class="dish-icon">🦐</div><h3>Brocheta de Gambas</h3><p>Gambas frescas a la brasa, jugosas y con todo el sabor del mar.</p></div>
+    <div class="dish star"><div class="dish-icon">🐟</div><h3>Lubina al Horno</h3><p>Pescado fresco al punto, tierno y lleno de sabor. Un placer en la mesa.</p></div>
+    <div class="dish"><div class="dish-icon">🥣</div><h3>Patatas a la Riojana</h3><p>Guisadas con chorizo y pimentón. El clásico reconfortante de siempre.</p></div>
+    <div class="dish"><div class="dish-icon">🍝</div><h3>Fideuá</h3><p>Fideos con mariscos al estilo levantino, lleno de sabor y tradición.</p></div>
+    <div class="dish"><div class="dish-icon">🍖</div><h3>Secreto Ibérico</h3><p>Corte especial a la plancha, jugoso e intenso. Para los amantes del ibérico.</p></div>
+    <div class="dish"><div class="dish-icon">🫘</div><h3>Morcilla de Burgos</h3><p>La mejor morcilla de arroz, servida caliente y en su punto.</p></div>
+    <div class="dish"><div class="dish-icon">🍮</div><h3>Natillas caseras</h3><p>Postre casero, cremosas y con ese sabor a vainilla de toda la vida.</p></div>
+  </div>
+  <div id="panel-full" class="panel list-panel reveal">
+    <div class="full-list">
+      <div class="full-item"><span>Tortilla de Patatas</span></div>
+      <div class="full-item"><span>Brocheta de Gambas</span></div>
+      <div class="full-item"><span>Morcilla de Burgos</span></div>
+      <div class="full-item"><span>Patatas Asadas</span></div>
+      <div class="full-item"><span>Fideuá</span></div>
+      <div class="full-item"><span>Patatas a la Riojana</span></div>
+      <div class="full-item"><span>Secreto Ibérico</span></div>
+      <div class="full-item"><span>Pollo al Chilindrón</span></div>
+      <div class="full-item"><span>Lubina al Horno</span></div>
+      <div class="full-item"><span>Vieira con Bechamel Gratinada</span></div>
+      <div class="full-item"><span>Churrasco</span></div>
+      <div class="full-item"><span>Patatas Fritas</span></div>
+      <div class="full-item"><span>Natillas caseras</span></div>
+      <div class="full-item"><span>Menú del día (consultar)</span></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+    <p style="font-size:.84rem;color:var(--ink-light);margin-bottom:1rem;">¿Tienes alguna alergia o intolerancia? Consúltanos sin problema.</p>
+    <a href="tel:+34976229472" class="btn-p" style="display:inline-flex;">📞 Consultar menú del día</a>
+  </div>
+</section>
+
+<section id="resenas">
+  <div class="rev-header reveal">
+    <p class="sec-label">Lo que dicen de nosotros</p>
+    <h2 class="sec-title">Más de <em>400 opiniones</em> en Google</h2>
+    <div class="big-rating">
+      <div class="big-num">4,4</div>
+      <div><div class="big-stars">★★★★½</div><div class="big-count">416 reseñas · Google Maps</div></div>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal"><div class="rev-q">"</div><p class="rev-text">Lo recomiendo totalmente. La comida es riquísima, el ambiente es espectacular y la atención es de diez. Sin duda, una parada obligatoria en Zaragoza.</p><div class="rev-foot"><span class="rev-name">Małgorzata D. · Local Guide</span><span class="rev-stars">★★★★★</span></div></div>
+    <div class="rev-card reveal"><div class="rev-q">"</div><p class="rev-text">Muy rico este sitio. Tranquilo, comida tradicional generosa, una carta sencilla en la que no te mareas y buen servicio. Volveré sin duda.</p><div class="rev-foot"><span class="rev-name">Javier A. · Local Guide</span><span class="rev-stars">★★★★★</span></div></div>
+    <div class="rev-card reveal"><div class="rev-q">"</div><p class="rev-text">Primera visita a Casa Antonio y muy impresionado con el servicio y la comida. Altamente recomendado. ¡Volveré sin duda!</p><div class="rev-foot"><span class="rev-name">Visitante internacional</span><span class="rev-stars">★★★★★</span></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+    <a href="https://maps.google.com/?cid=7614509426525505290" target="_blank" class="btn-p">Ver todas las reseñas en Google Maps</a>
+  </div>
+</section>
+
+<section id="reservas">
+  <div class="res-inner">
+    <div class="res-left reveal">
+      <p class="sec-label">Reserva tu mesa</p>
+      <h2 class="sec-title">Te esperamos con<br><em>las puertas abiertas</em></h2>
+      <p>Reserva tu mesa fácilmente. Para grupos, celebraciones o simplemente para disfrutar en familia, estamos aquí para atenderte.</p>
+      <div class="cinfo">
+        <div class="crow"><div class="ci">📍</div><div class="ct"><strong>Dirección</strong><span>C. de Eduardo Dato, 22 · 50005 Zaragoza</span></div></div>
+        <div class="crow"><div class="ci">📞</div><div class="ct"><strong>Teléfono</strong><span><a href="tel:+34976229472">976 22 94 72</a></span></div></div>
+        <div class="crow"><div class="ci">🌐</div><div class="ct"><strong>Web</strong><span><a href="https://barcasaantonio.es" target="_blank">barcasaantonio.es</a></span></div></div>
+        <div class="crow"><div class="ci">🕐</div><div class="ct"><strong>Horario</strong><span>L–S: 12:00–16:00 y 19:30–23:00 · D: 12:00–16:00</span></div></div>
+      </div>
+    </div>
+    <div class="res-form reveal">
+      <div id="fBody">
+        <h3>Solicitar reserva</h3>
+        <p>Rellena el formulario y te confirmamos en breve.</p>
+        <div class="f2">
+          <div class="fg"><label>Nombre</label><input type="text" id="fn" placeholder="Tu nombre"></div>
+          <div class="fg"><label>Teléfono</label><input type="tel" id="ft" placeholder="612 345 678"></div>
+        </div>
+        <div class="f2">
+          <div class="fg"><label>Fecha</label><input type="date" id="fd"></div>
+          <div class="fg"><label>Hora</label>
+            <select id="fh">
+              <option value="">Selecciona hora</option>
+              <optgroup label="Mediodía"><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option></optgroup>
+              <optgroup label="Noche (L–S)"><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option></optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Número de personas</label>
+          <select id="fp"><option>1 persona</option><option>2 personas</option><option selected>3–4 personas</option><option>5–6 personas</option><option>7–10 personas</option><option>Más de 10 (grupo)</option></select>
+        </div>
+        <div class="fg"><label>Comentarios o peticiones especiales</label><textarea id="fc" placeholder="Cumpleaños, alergias, silla de bebé..."></textarea></div>
+        <button class="fsub" onclick="sendForm()">Solicitar reserva →</button>
+      </div>
+      <div class="ok-msg" id="fOk">
+        <div class="ck">✅</div>
+        <h4>¡Reserva recibida!</h4>
+        <p>Nos pondremos en contacto contigo muy pronto para confirmarla. ¡Hasta pronto en Casa Antonio!</p>
+        <br>
+        <a href="tel:+34976229472" class="btn-p" style="display:inline-flex;justify-content:center;">Llamar directamente</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="reveal">
+    <p class="sec-label">Cómo llegar</p>
+    <h2 class="sec-title">Horarios y <em>ubicación</em></h2>
+    <div class="hours-list">
+      <div class="hrow"><span class="hday">Lunes – Sábado</span><span class="htime">12:00–16:00 · 19:30–23:00</span></div>
+      <div class="hrow"><span class="hday">Domingo</span><span class="htime">12:00–16:00</span></div>
+    </div>
+    <br>
+    <p style="font-size:.84rem;color:var(--ink-light);">🚌 Parada de bus cercana &nbsp;|&nbsp; 🅿️ Parking zona azul disponible</p>
+  </div>
+  <div class="map-box reveal">
+    <div class="map-center">
+      <div class="mp">📍</div>
+      <h4>Casa Antonio</h4>
+      <p>C. de Eduardo Dato, 22<br>50005 Zaragoza</p>
+      <a href="https://maps.google.com/?cid=7614509426525505290" target="_blank" class="map-btn">Abrir en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <a href="#" class="nav-logo">Casa <span>Antonio</span></a>
+      <p>Bar Restaurante en el corazón de Zaragoza. Cocina tradicional aragonesa desde hace más de 40 años. El sabor de siempre, con el cariño de siempre.</p>
+    </div>
+    <div>
+      <h4>Navegar</h4>
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li><li><a href="#carta">Carta</a></li>
+        <li><a href="#resenas">Reseñas</a></li><li><a href="#horarios">Ubicación</a></li>
+        <li><a href="#reservas">Reservar mesa</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34976229472">976 22 94 72</a></li>
+        <li><a href="https://barcasaantonio.es" target="_blank">barcasaantonio.es</a></li>
+        <li><a href="https://maps.google.com/?cid=7614509426525505290" target="_blank">C. Eduardo Dato, 22 · Zaragoza</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Bar Restaurante Casa Antonio · Zaragoza</span>
+    <span>Hecho con ❤️ en Aragón</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>30));
+
+// Hamburger
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+// Tabs
+function showTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+// Reveal
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*70);});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Form
+document.getElementById('fd').min=new Date().toISOString().split('T')[0];
+function sendForm(){
+  const n=document.getElementById('fn').value.trim();
+  const t=document.getElementById('ft').value.trim();
+  const d=document.getElementById('fd').value;
+  const h=document.getElementById('fh').value;
+  if(!n||!t||!d||!h){alert('Por favor rellena nombre, teléfono, fecha y hora.');return;}
+  document.getElementById('fBody').style.display='none';
+  document.getElementById('fOk').style.display='block';
+}
+
+// Review carousel
+(function(){
+  const slides=document.querySelectorAll('.review-slide');
+  const dotsWrap=document.getElementById('carouselDots');
+  let cur=0,timer;
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  function goTo(n){
+    slides[cur].classList.remove('active');
+    dotsWrap.children[cur].classList.remove('active');
+    cur=(n+slides.length)%slides.length;
+    slides[cur].classList.add('active');
+    dotsWrap.children[cur].classList.add('active');
+    resetTimer();
+  }
+  function resetTimer(){clearInterval(timer);timer=setInterval(()=>goTo(cur+1),5000);}
+  resetTimer();
+})();
+</script>
+</body>
+</html>
